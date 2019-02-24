@@ -69,3 +69,4 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
 "# crypto_trader" 
 "# crypto_trader"  git init git add README.md git commit -m "first commit" git remote add origin https://github.com/dobros/crypto_trader.git git push -u origin master
+"# crypto_trader" 
