@@ -65,8 +65,6 @@ Route::get('/api', function ()
 	$body = $response->getBody()->getContents();
 
 	return response()->json(json_decode($body));
-
-//	dd();
 });
 
 Route::group(['middleware' => ['auth']], function () {
