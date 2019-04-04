@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataSource name="krypto@localhost">
-  <database-model serializer="dbm" dbms="MARIADB" family-id="MARIADB" format-version="4.14">
+  <database-model serializer="dbm" dbms="MARIADB" family-id="MARIADB" format-version="4.15">
     <root id="1">
       <ServerVersion>10.1.21</ServerVersion>
-      <Dbms>MARIADB</Dbms>
       <DefaultEngine>InnoDB</DefaultEngine>
       <DefaultCasing>lower/lower</DefaultCasing>
     </root>
@@ -978,116 +977,365 @@
       <Charset>utf8mb4</Charset>
       <DefaultForCharset>0</DefaultForCharset>
     </collation>
-    <table id="247" parent="7" name="migrations">
+    <table id="247" parent="7" name="currencies">
       <Collation>utf8mb4_unicode_ci</Collation>
     </table>
-    <table id="248" parent="7" name="password_resets">
+    <table id="248" parent="7" name="migrations">
       <Collation>utf8mb4_unicode_ci</Collation>
     </table>
-    <table id="249" parent="7" name="users">
+    <table id="249" parent="7" name="password_resets">
       <Collation>utf8mb4_unicode_ci</Collation>
     </table>
-    <column id="250" parent="247" name="id">
+    <table id="250" parent="7" name="products">
+      <Collation>utf8mb4_unicode_ci</Collation>
+    </table>
+    <table id="251" parent="7" name="trades">
+      <Collation>utf8mb4_unicode_ci</Collation>
+    </table>
+    <table id="252" parent="7" name="users">
+      <Collation>utf8mb4_unicode_ci</Collation>
+    </table>
+    <column id="253" parent="247" name="currency_id">
       <Position>1</Position>
       <DataType>int(10) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="251" parent="247" name="migration">
+    <column id="254" parent="247" name="external_currency_id">
+      <Position>2</Position>
+      <DataType>char(10)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="255" parent="247" name="name">
+      <Position>3</Position>
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="256" parent="247" name="description">
+      <Position>4</Position>
+      <DataType>varchar(191)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="257" parent="247" name="created_at">
+      <Position>5</Position>
+      <DataType>timestamp|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="258" parent="247" name="updated_at">
+      <Position>6</Position>
+      <DataType>timestamp|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <index id="259" parent="247" name="currencies_external_currency_id_unique">
+      <ColNames>external_currency_id</ColNames>
+      <Unique>1</Unique>
+      <Type>btree</Type>
+    </index>
+    <key id="260" parent="247" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>currency_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="261" parent="247" name="currencies_external_currency_id_unique">
+      <ColNames>external_currency_id</ColNames>
+      <UnderlyingIndexName>currencies_external_currency_id_unique</UnderlyingIndexName>
+    </key>
+    <column id="262" parent="248" name="id">
+      <Position>1</Position>
+      <DataType>int(10) unsigned|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="263" parent="248" name="migration">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="252" parent="247" name="batch">
+    <column id="264" parent="248" name="batch">
       <Position>3</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="253" parent="247" name="PRIMARY">
+    <key id="265" parent="248" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="254" parent="248" name="email">
+    <column id="266" parent="249" name="email">
       <Position>1</Position>
       <DataType>varchar(191)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="255" parent="248" name="token">
+    <column id="267" parent="249" name="token">
       <Position>2</Position>
       <DataType>varchar(191)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="256" parent="248" name="created_at">
+    <column id="268" parent="249" name="created_at">
       <Position>3</Position>
       <DataType>timestamp|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="257" parent="248" name="password_resets_email_index">
+    <index id="269" parent="249" name="password_resets_email_index">
       <ColNames>email</ColNames>
       <Type>btree</Type>
     </index>
-    <column id="258" parent="249" name="id">
+    <column id="270" parent="250" name="product_id">
       <Position>1</Position>
       <DataType>int(10) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="259" parent="249" name="name">
+    <column id="271" parent="250" name="external_product_id">
+      <Position>2</Position>
+      <DataType>char(30)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="272" parent="250" name="name">
+      <Position>3</Position>
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="273" parent="250" name="description">
+      <Position>4</Position>
+      <DataType>varchar(191)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="274" parent="250" name="from_currency_id">
+      <Position>5</Position>
+      <DataType>int(10) unsigned|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="275" parent="250" name="to_currency_id">
+      <Position>6</Position>
+      <DataType>int(10) unsigned|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="276" parent="250" name="created_at">
+      <Position>7</Position>
+      <DataType>timestamp|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="277" parent="250" name="updated_at">
+      <Position>8</Position>
+      <DataType>timestamp|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <index id="278" parent="250" name="products_external_product_id_unique">
+      <ColNames>external_product_id</ColNames>
+      <Unique>1</Unique>
+      <Type>btree</Type>
+    </index>
+    <index id="279" parent="250" name="idx_from_currency_id">
+      <ColNames>from_currency_id</ColNames>
+      <Type>btree</Type>
+    </index>
+    <index id="280" parent="250" name="idx_to_currency_id">
+      <ColNames>to_currency_id</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="281" parent="250" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>product_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="282" parent="250" name="products_external_product_id_unique">
+      <ColNames>external_product_id</ColNames>
+      <UnderlyingIndexName>products_external_product_id_unique</UnderlyingIndexName>
+    </key>
+    <foreign-key id="283" parent="250" name="products_from_currency_id_foreign">
+      <ColNames>from_currency_id</ColNames>
+      <RefSchemaName>krypto</RefSchemaName>
+      <RefTableName>currencies</RefTableName>
+      <RefColNames>currency_id</RefColNames>
+    </foreign-key>
+    <foreign-key id="284" parent="250" name="products_to_currency_id_foreign">
+      <ColNames>to_currency_id</ColNames>
+      <RefSchemaName>krypto</RefSchemaName>
+      <RefTableName>currencies</RefTableName>
+      <RefColNames>currency_id</RefColNames>
+    </foreign-key>
+    <column id="285" parent="251" name="trade_id">
+      <Position>1</Position>
+      <DataType>int(10) unsigned|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="286" parent="251" name="product_id">
+      <Position>2</Position>
+      <DataType>int(10) unsigned|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="287" parent="251" name="buy_price_value">
+      <Position>3</Position>
+      <DataType>double(16,8 digit)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="288" parent="251" name="sell_price_value">
+      <Position>4</Position>
+      <DataType>double(16,8 digit)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="289" parent="251" name="fee">
+      <Position>5</Position>
+      <DataType>decimal(12,8 digit)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="290" parent="251" name="counts">
+      <Position>6</Position>
+      <DataType>decimal(12,6 digit)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="291" parent="251" name="profit_value">
+      <Position>7</Position>
+      <DataType>double(16,8 digit)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="292" parent="251" name="is_gain">
+      <Position>8</Position>
+      <DataType>tinyint(1)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="293" parent="251" name="user_id">
+      <Position>9</Position>
+      <DataType>int(10) unsigned|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="294" parent="251" name="note">
+      <Position>10</Position>
+      <DataType>varchar(191)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="295" parent="251" name="buy_at">
+      <Position>11</Position>
+      <DataType>timestamp|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="296" parent="251" name="sell_at">
+      <Position>12</Position>
+      <DataType>timestamp|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="297" parent="251" name="created_at">
+      <Position>13</Position>
+      <DataType>timestamp|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="298" parent="251" name="updated_at">
+      <Position>14</Position>
+      <DataType>timestamp|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <index id="299" parent="251" name="idx_product_id">
+      <ColNames>product_id</ColNames>
+      <Type>btree</Type>
+    </index>
+    <index id="300" parent="251" name="idx_is_gain">
+      <ColNames>is_gain</ColNames>
+      <Type>btree</Type>
+    </index>
+    <index id="301" parent="251" name="idx_user_id">
+      <ColNames>user_id</ColNames>
+      <Type>btree</Type>
+    </index>
+    <index id="302" parent="251" name="idx_buy_at">
+      <ColNames>buy_at</ColNames>
+      <Type>btree</Type>
+    </index>
+    <index id="303" parent="251" name="idx_sell_at">
+      <ColNames>sell_at</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="304" parent="251" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>trade_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="305" parent="251" name="trades_product_id_foreign">
+      <ColNames>product_id</ColNames>
+      <RefSchemaName>krypto</RefSchemaName>
+      <RefTableName>products</RefTableName>
+      <RefColNames>product_id</RefColNames>
+    </foreign-key>
+    <foreign-key id="306" parent="251" name="trades_user_id_foreign">
+      <ColNames>user_id</ColNames>
+      <RefSchemaName>krypto</RefSchemaName>
+      <RefTableName>users</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="307" parent="252" name="id">
+      <Position>1</Position>
+      <DataType>int(10) unsigned|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="308" parent="252" name="name">
       <Position>2</Position>
       <DataType>varchar(191)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="260" parent="249" name="email">
+    <column id="309" parent="252" name="email">
       <Position>3</Position>
       <DataType>varchar(191)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="261" parent="249" name="email_verified_at">
+    <column id="310" parent="252" name="email_verified_at">
       <Position>4</Position>
       <DataType>timestamp|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="262" parent="249" name="password">
+    <column id="311" parent="252" name="password">
       <Position>5</Position>
       <DataType>varchar(191)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="263" parent="249" name="remember_token">
+    <column id="312" parent="252" name="remember_token">
       <Position>6</Position>
       <DataType>varchar(100)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="264" parent="249" name="created_at">
+    <column id="313" parent="252" name="created_at">
       <Position>7</Position>
       <DataType>timestamp|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="265" parent="249" name="updated_at">
+    <column id="314" parent="252" name="updated_at">
       <Position>8</Position>
       <DataType>timestamp|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="266" parent="249" name="users_email_unique">
+    <index id="315" parent="252" name="users_email_unique">
       <ColNames>email</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <key id="267" parent="249" name="PRIMARY">
+    <key id="316" parent="252" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="268" parent="249" name="users_email_unique">
+    <key id="317" parent="252" name="users_email_unique">
       <ColNames>email</ColNames>
       <UnderlyingIndexName>users_email_unique</UnderlyingIndexName>
     </key>

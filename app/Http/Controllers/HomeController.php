@@ -24,12 +24,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $client = new Client(['base_uri' => 'https://api.pro.coinbase.com']);
-
-        $response = $client->post('/');
-
-        dump($response->getBody());
-
         return view('home');
     }
 }
