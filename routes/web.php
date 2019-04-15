@@ -39,9 +39,11 @@ Route::get('/api', function ()
 		getenv('PRO_COINBASE_PASSPHRASE')
 	);
 
+	$bodyToSend = ['size' => 0.1, 'price' => 100, 'side' => 'sell', 'product_id' => 'LTC-EUR'];
+
 	$sign = $coinbaseExchange->signature(
 		'/orders',
-		['size' => 0.01, 'price' => 0.1, 'side' => 'buy', 'product_id' => 'BTC-EUR'],
+        $bodyToSend,
 		$usedTimestamp,
 		'POST'
 	);
@@ -57,16 +59,12 @@ Route::get('/api', function ()
 	$client = new Client(['base_uri' => $baseUri, 'headers' => $headers]);
 
 	$response = $client->post('/orders', [
-		'form_params' => [
-			'size' => 0.01, 'price' => 0.1, 'side' => 'buy', 'product_id' => 'BTC-EUR'
-		]
+		'json' => $bodyToSend
 	]);
 
 	$body = $response->getBody()->getContents();
 
 	return response()->json(json_decode($body));
-
-//	dd();
 });
 
 Route::group(['middleware' => ['auth']], function () {

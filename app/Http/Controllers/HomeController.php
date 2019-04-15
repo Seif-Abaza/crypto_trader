@@ -2,8 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use GuzzleHttp\Client;
-use Illuminate\Http\Request;
+use App\Client\Coinbase\Order;
 
 class HomeController extends Controller
 {
@@ -24,6 +23,14 @@ class HomeController extends Controller
      */
     public function index()
     {
+
+//        $order = new Order();
+
+//        $response = $order->createOrder(['size' => 0.1, 'price' => 100, 'side' => 'sell', 'product_id' => 'LTC-EUR']);
+//        $response = $order->getOrders();
+
+//        return response()->json($response);
+
         return view('home');
     }
 }
